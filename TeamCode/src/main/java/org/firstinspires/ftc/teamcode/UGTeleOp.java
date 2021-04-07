@@ -55,7 +55,7 @@ import static org.firstinspires.ftc.robotcore.external.navigation.AxesReference.
 
 @TeleOp(name = "Scrimmage 5 TeleOp", group = "Competition")
 //@Disabled
-public class Scrimmage5TeleOp extends LinearOpMode {
+public class UGTeleOp extends LinearOpMode {
 
   private OpenGLMatrix lastLocation = null;
   private VuforiaLocalizer vuforia = null;
@@ -66,7 +66,7 @@ public class Scrimmage5TeleOp extends LinearOpMode {
 
   @Override
   public void runOpMode() {
-    Pullbot robot = new Pullbot(this);
+    Pullbot robot = new Trainerbot(this);
     Navigator navigator = new Navigator(this);
     String initReport = robot.init(hardwareMap);
     initReport += navigator.init(hardwareMap);
@@ -83,7 +83,7 @@ public class Scrimmage5TeleOp extends LinearOpMode {
       //robot.tankDrive();
       //robot.oneStickDrive();
       robot.enableNudge();
-      robot.enableArm();
+      //robot.enableArm();
 
       // check all the trackable targets to see which one (if any) is visible.
       targetVisible = false;
@@ -134,11 +134,13 @@ public class Scrimmage5TeleOp extends LinearOpMode {
 
       // Drive from Goal Zone to front Wall, in position to score Wobbler over
       // it.
-      if (gamepad1.y) {
+      /*if (gamepad1.y) {
         robot.setDriveRunMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.DriveDistanceFastSigmoid(96.0);
         robot.setDriveRunMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
       }
+
+       */
     }
   }
 }

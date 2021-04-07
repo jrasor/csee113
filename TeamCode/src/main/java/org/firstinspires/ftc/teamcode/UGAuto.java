@@ -35,8 +35,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 @Autonomous(name = "Scrimmage 5 Auto", group = "Competition")
 //@Disabled
-public class Scrimmage5Auto extends LinearOpMode {
-  Pullbot robot;
+public class UGAuto extends LinearOpMode {
+  Trainerbot robot;
   double straightSpeed = 0.60;
   double turnSpeed = 0.30;
   boolean doPaths = true;
@@ -64,7 +64,7 @@ public class Scrimmage5Auto extends LinearOpMode {
 
   @Override
   public void runOpMode() {
-    robot = new Pullbot(this);
+    robot = new Trainerbot (this);
     robot.init(hardwareMap);
 
     waitForStart();

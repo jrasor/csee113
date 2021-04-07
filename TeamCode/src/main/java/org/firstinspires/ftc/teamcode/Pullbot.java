@@ -81,11 +81,8 @@ import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocaliz
  * <p>
  * Motor channel:  Left front  drive motor:        "motor0"
  * Motor channel:  Right front drive motor:        "motor1"
- * Motor channel:  Flexes the arm elbow:           "arm"
  * Color sensor:                                   "colorSensor"
  *
- * Before INITializing, manually move the arm to its initial position: back
- * over the robot, pointing down at 45°.
  */
 
 /* Version history
@@ -164,13 +161,7 @@ public class Pullbot extends GenericFTCRobot {
   public DcMotorEx leftDrive = null;
   public DcMotorEx rightDrive = null;
 
-  // Arm related properties
-  public final double ARMSPEED = 0.5;
-  public final int DEPLOYED = 1917;   // arm extended in front of the Pullbot
-  public final int OVER_WALL = 1450;
-  public final int STOWED = 0;     // arm retracted back over the Pullbot
 
-  public DcMotorEx arm = null;
 
   // Pullbot specific sensor members.
   public ColorSensor colorSensor;
@@ -178,7 +169,7 @@ public class Pullbot extends GenericFTCRobot {
 
   // Initialization.
   HardwareMap hwMap = null;
-  private LinearOpMode currentOpMode;
+  public LinearOpMode currentOpMode;
   private ElapsedTime period = new ElapsedTime();
 
   /* Constructors */
@@ -222,11 +213,11 @@ public class Pullbot extends GenericFTCRobot {
     rightDrive.setDirection(DcMotor.Direction.REVERSE);
     leftDrive.setPower(0);
     rightDrive.setPower(0);
-    arm = hwMap.get(DcMotorEx.class, "arm");
-    arm.setDirection(DcMotorSimple.Direction.FORWARD);
+    // = hwMap.get(DcMotorEx.class, "arm");
+    //arm.setDirection(DcMotorSimple.Direction.FORWARD);
     // Manually move arm to STOWED position, back over robot at 45°.
-    arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-    arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+    //arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+    //arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
     leftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     rightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -685,32 +676,8 @@ public class Pullbot extends GenericFTCRobot {
         arcInches, arcInches * ratio);
   }
 
-
   /*                      Command layer.                    */
   // Human driver issues commands with gamepad.
-
-  public void enableArm () {
-    arm.setPower(0.0);
-    while (currentOpMode.gamepad1.dpad_up) { // Away from Driver
-      // Move arm towards Field.
-      // Stops when fully extended, even if commanded to go more.
-      if (arm.getCurrentPosition() >= DEPLOYED) {
-        arm.setPower(0.0);
-      } else {
-        arm.setPower(ARMSPEED);
-      }
-    }
-
-    while (currentOpMode.gamepad1.dpad_down) {
-      // Pull arm back over the robot.
-      // Stops when fully retracted, even if commanded to keep coming.
-      if (arm.getCurrentPosition() <= STOWED) {
-        arm.setPower(0.0);
-      } else {
-        arm.setPower(-ARMSPEED);
-      }
-    }
-  }
 
   public void enableNudge() {
 
