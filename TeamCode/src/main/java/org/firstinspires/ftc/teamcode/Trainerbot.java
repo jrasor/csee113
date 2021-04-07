@@ -94,16 +94,18 @@ import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocaliz
 */
 
 public class Trainerbot extends Pullbot {
+  private ElapsedTime period = new ElapsedTime();
 
   // Arm related properties
+  public Servo arm;
   public final double DEPLOYED = 0.8;   // Extended in front of the Trainerbot
   public final double STOWED = 0.0;     // Retracted back over the Trainerbot
   public final double ARMNUDGE = 0.01;  // Slow arm movement increment
 
   // Initialization.
-  HardwareMap hwMap = null;
-  private ElapsedTime period = new ElapsedTime();
-  public Servo arm;
+ // HardwareMap hwMap = null;
+
+
 
   /* Constructors */
   public Trainerbot() {
@@ -113,7 +115,7 @@ public class Trainerbot extends Pullbot {
     currentOpMode = linearOpMode;
   }
 
-  // * to do: consolidate initialization stuff.
+  // * todo: consolidate initialization stuff.
   public String init(HardwareMap someHWMap) {
     hwMap = someHWMap;
     super.init(someHWMap);
