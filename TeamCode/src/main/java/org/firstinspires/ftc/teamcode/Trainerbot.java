@@ -90,32 +90,19 @@ import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocaliz
 
 /* Version history
  * ======= =======
- * v 0.1   4/6/21. Initial conversion from the Pullbot.
+ * v 0.1    4/6/21  Initial conversion from the Pullbot.
+ * v 0.2    4/7/21  Added arm management.
 */
 
 public class Trainerbot extends Pullbot {
   private ElapsedTime period = new ElapsedTime();
 
-  // Arm related properties
-  public Servo arm;
-  public final double DEPLOYED = 0.8;   // Extended in front of the Trainerbot
-  public final double STOWED = 0.0;     // Retracted back over the Trainerbot
-  public final double ARMNUDGE = 0.01;  // Slow arm movement increment
-
-  // Initialization.
- // HardwareMap hwMap = null;
-
-
-
   /* Constructors */
-  public Trainerbot() {
-    super();
-  }
+  public Trainerbot() { super(); }
   public Trainerbot(LinearOpMode linearOpMode) {
     currentOpMode = linearOpMode;
   }
 
-  // * todo: consolidate initialization stuff.
   public String init(HardwareMap someHWMap) {
     hwMap = someHWMap;
     super.init(someHWMap);
@@ -125,6 +112,13 @@ public class Trainerbot extends Pullbot {
   }
 
   /* Arm management. */
+  // Arm related properties
+  public Servo arm;
+  public final double DEPLOYED = 0.8;   // Extended in front of the Trainerbot
+  public final double STOWED = 0.0;     // Retracted back over the Trainerbot
+  public final double ARMNUDGE = 0.01;  // Slow arm movement increment
+
+  // Arm methods.
   void armDeploy () {
     arm.setPosition(DEPLOYED);
   }
@@ -133,8 +127,5 @@ public class Trainerbot extends Pullbot {
     arm.setPosition(STOWED);
   }
 
-  double armMove () {
-    return arm.getPosition();
-  }
   // Macros can go here. Most will be used in the opmodes.
 }
