@@ -96,8 +96,8 @@ import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocaliz
 public class Trainerbot extends Pullbot {
 
   // Arm related properties
-  public final double DEPLOYED = 0.7;   // arm extended in front of the Pullbot
-  public final double STOWED = 0.0;     // arm retracted back over the Pullbot
+  public final double DEPLOYED = 0.8;   // Extended in front of the Trainerbot
+  public final double STOWED = 0.0;     // Retracted back over the Trainerbot
 
   // Initialization.
   HardwareMap hwMap = null;
@@ -112,12 +112,22 @@ public class Trainerbot extends Pullbot {
     currentOpMode = linearOpMode;
   }
 
+  // * to do: consolidate initialization stuff.
   public String init(HardwareMap someHWMap) {
     hwMap = someHWMap;
     super.init(someHWMap);
     String initializationReport = "Trainerbot initialization: ";
     arm = hwMap.get(Servo.class, "arm");
     return initializationReport;
+  }
+
+  /* Arm management. */
+  void armDeploy () {
+    arm.setPosition(DEPLOYED);
+  }
+
+  void armStow () {
+    arm.setPosition(STOWED);
   }
 
   // Macros can go here. Most will be used in the opmodes.

@@ -66,7 +66,7 @@ public class UGTeleOp extends LinearOpMode {
 
   @Override
   public void runOpMode() {
-    Pullbot robot = new Trainerbot(this);
+    Trainerbot robot = new Trainerbot(this);
     Navigator navigator = new Navigator(this);
     String initReport = robot.init(hardwareMap);
     initReport += navigator.init(hardwareMap);
@@ -78,13 +78,19 @@ public class UGTeleOp extends LinearOpMode {
     robot.rightDrive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
     waitForStart();
+    robot.armStow();
     while (opModeIsActive()) {
+      /* Using the drive train. */
       robot.simpleDrive();
       //robot.tankDrive();
       //robot.oneStickDrive();
       robot.enableNudge();
-      //robot.enableArm();
 
+      /* Using the arm. */
+      if (gamepad1.y) robot.armDeploy();
+      if (gamepad1.a) robot.armStow();
+
+      /* Using robot vision. */
       // check all the trackable targets to see which one (if any) is visible.
       targetVisible = false;
       try {
