@@ -96,24 +96,15 @@ import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocaliz
 public class Trainerbot extends Pullbot {
 
   // Arm related properties
-  //public final double ARMSPEED = 0.5;
   public final double DEPLOYED = 0.7;   // arm extended in front of the Pullbot
-  //public final int OVER_WALL = 1450;
   public final double STOWED = 0.0;     // arm retracted back over the Pullbot
-
-
-  // Trainerbot specific sensor members.
-  //public ColorSensor colorSensor;
-  //public static VuforiaLocalizer.CameraDirection CAMERA_CHOICE = BACK;
 
   // Initialization.
   HardwareMap hwMap = null;
-  //private LinearOpMode currentOpMode;
   private ElapsedTime period = new ElapsedTime();
   private Servo arm;
 
   /* Constructors */
-
   public Trainerbot() {
     super();
   }
@@ -125,12 +116,9 @@ public class Trainerbot extends Pullbot {
     hwMap = someHWMap;
     super.init(someHWMap);
     String initializationReport = "Trainerbot initialization: ";
-
     arm = hwMap.get(Servo.class, "arm");
-
     return initializationReport;
   }
-
 
   // Macros can go here. Most will be used in the opmodes.
 }

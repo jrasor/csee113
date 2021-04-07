@@ -109,6 +109,10 @@ import static org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocaliz
  *        Zone.
  * v 5.0  2/22/21 v 3.4 was v 4.0, for Ultimate Goal Scrimmage 4. Name change
  *        and little else in this version.
+ * v 6.0  4/7/21 CSEE/IDEA 113 instruction version. Adds robot class
+ *        Trainerbot, an extension of Pullbot. The Trainerbot manages the arm.
+ *        The Pullbot takes care of the drive train and electronics. It
+ *        inherits vision properties from GenericFTCRobot.
  */
 
 public class Pullbot extends GenericFTCRobot {
