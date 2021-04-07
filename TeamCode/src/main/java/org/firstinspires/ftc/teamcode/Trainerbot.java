@@ -98,11 +98,12 @@ public class Trainerbot extends Pullbot {
   // Arm related properties
   public final double DEPLOYED = 0.8;   // Extended in front of the Trainerbot
   public final double STOWED = 0.0;     // Retracted back over the Trainerbot
+  public final double ARMNUDGE = 0.01;  // Slow arm movement increment
 
   // Initialization.
   HardwareMap hwMap = null;
   private ElapsedTime period = new ElapsedTime();
-  private Servo arm;
+  public Servo arm;
 
   /* Constructors */
   public Trainerbot() {
@@ -130,5 +131,8 @@ public class Trainerbot extends Pullbot {
     arm.setPosition(STOWED);
   }
 
+  double armMove () {
+    return arm.getPosition();
+  }
   // Macros can go here. Most will be used in the opmodes.
 }

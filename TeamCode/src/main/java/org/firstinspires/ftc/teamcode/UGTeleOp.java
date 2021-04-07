@@ -57,6 +57,7 @@ import static org.firstinspires.ftc.robotcore.external.navigation.AxesReference.
 //@Disabled
 public class UGTeleOp extends LinearOpMode {
 
+  private double whereIsArm;
   private OpenGLMatrix lastLocation = null;
   private VuforiaLocalizer vuforia = null;
   private boolean targetVisible = false;
@@ -87,8 +88,24 @@ public class UGTeleOp extends LinearOpMode {
       robot.enableNudge();
 
       /* Using the arm. */
+      // Move immediately to one of the max positions.
       if (gamepad1.y) robot.armDeploy();
       if (gamepad1.a) robot.armStow();
+      // Move slowly toward one of those positions.
+      if (gamepad1.dpad_up) {
+        whereIsArm = robot.arm.getPosition();
+        if (whereIsArm < robot.DEPLOYED)
+          robot.arm.setPosition(whereIsArm + robot.ARMNUDGE);
+        else
+          robot.arm.setPosition(robot.DEPLOYED);
+      }
+      if (gamepad1.dpad_down) {
+        whereIsArm = robot.arm.getPosition();
+        if (whereIsArm > robot.STOWED)
+          robot.arm.setPosition(whereIsArm - robot.ARMNUDGE);
+        else
+          robot.arm.setPosition(robot.STOWED);
+      }
 
       /* Using robot vision. */
       // check all the trackable targets to see which one (if any) is visible.
