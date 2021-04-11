@@ -33,7 +33,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
  * o 4 Ring case: Go for Zone C.
  */
 
-@Autonomous(name = "Scrimmage 5 Auto", group = "Competition")
+@Autonomous(name = "UG Auto", group = "Competition")
 //@Disabled
 public class UGAuto extends LinearOpMode {
   Trainerbot robot;

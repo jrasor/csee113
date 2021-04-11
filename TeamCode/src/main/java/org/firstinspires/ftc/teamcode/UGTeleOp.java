@@ -53,7 +53,7 @@ import static org.firstinspires.ftc.robotcore.external.navigation.AngleUnit.DEGR
 import static org.firstinspires.ftc.robotcore.external.navigation.AxesOrder.XYZ;
 import static org.firstinspires.ftc.robotcore.external.navigation.AxesReference.EXTRINSIC;
 
-@TeleOp(name = "Scrimmage 5 TeleOp", group = "Competition")
+@TeleOp(name = "UG TeleOp", group = "Competition")
 //@Disabled
 public class UGTeleOp extends LinearOpMode {
 
