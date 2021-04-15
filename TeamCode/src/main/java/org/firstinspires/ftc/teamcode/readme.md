@@ -23,4 +23,4 @@ Once you have downloaded and uncompressed (if needed) your folder, you can use A
 Getting Help with SkyStone
 FIRST maintains online documentation with information and tutorials on how to use the FIRST Tech Challenge software and robot control system. You can access this documentation using the following link:
 
-      [SKYSTONE Online Documentation] (https://github.com/FIRST-Tech-Challenge/SKYSTONE/wiki)
+      [ULTIMATE GOAL] (https://github.com/FIRST-Tech-Challenge/FtcRobotController)
